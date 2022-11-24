@@ -16,7 +16,7 @@ $ mkvirtualenv avocado -p python3
 $ workon avocado
 ```
 
-If you want to deactivate:
+3. If you want to deactivate:
 
 ```
 $ deactivate
