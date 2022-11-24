@@ -3,11 +3,11 @@ import numpy as np
 import pandas as pd
 import pickle
 import mlflow
-import pathlib
+import os
 from PIL import Image
 
 
-wd = pathlib.Path('dash.py').parent.absolute()
+wd = os.path.abspath(os.getcwd())
 
 st.set_page_config(
     page_title="Avocado project",
