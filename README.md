@@ -4,7 +4,7 @@ Módelo de ML que realiza a previsão do preço do abacate.
 
 ## Dev.:
 
-1. Create virtual env with virtualenvwrapper:
+1. Create virtual env with [virtualenvwrapper](https://virtualenvwrapper.readthedocs.io/en/latest/install.html):
 
 ```
 $ mkvirtualenv avocado -p python3
