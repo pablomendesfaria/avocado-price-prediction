@@ -3,10 +3,10 @@ import numpy as np
 import pandas as pd
 import pickle
 import mlflow
-from PIL import Image
+import cv2 as cv
 
 
-image = Image.open('./avocado.jpg')
+image = cv.imread('avocado.jpg')[...,::-1]
 
 st.set_page_config(
     page_title="Avocado project",
@@ -21,60 +21,70 @@ st.markdown('## Fill in the avocado sales information of the week')
 plu4046 = st.number_input(
     'PLU4046:',
     min_value=0.0,
-    max_value=22743616.17
+    max_value=5160896.68,
+    value=1036.74
 )
 
 plu4225 = st.number_input(
     'PLU4225:',
     min_value=0.0,
-    max_value=20470572.61
+    max_value=4097591.67,
+    value=54454.85
 )
 
 plu4770 = st.number_input(
     'PLU4770:',
     min_value=0.0,
-    max_value=2546439.11
+    max_value=804558.25,
+    value=48.16
 )
 
 small_bags = st.number_input(
     'Small Bags:',
     min_value=0.0,
-    max_value=13384586.80
+    max_value=3403581.49,
+    value=8603.62
 )
 
 large_bags = st.number_input(
     'Large Bags:',
     min_value=0.0,
-    max_value=5719096.61
+    max_value=1049435.14,
+    value=93.25
 )
 
 xlarge_bags = st.number_input(
     'XLarge Bags:',
     min_value=0.0,
-    max_value=551693.65
+    max_value=131300.76,
+    value=0.0
 )
 
 avocado_type = st.selectbox(
     'Type:',
-    ['Conventional', 'Organic']
+    ['Conventional', 'Organic'],
+    index=0
 )
 
 year = st.number_input(
     'Year:',
     min_value=2015,
-    max_value=2018
+    max_value=2018,
+    value=2015
 )
 
 mounth = st.number_input(
     'Mounth:',
     min_value=1,
-    max_value=12
+    max_value=12,
+    value=12
 )
 
 day = st.number_input(
     'Day:',
     min_value=1,
-    max_value=31
+    max_value=31,
+    value=27
 )
 
 region = st.selectbox(
@@ -85,7 +95,8 @@ region = st.selectbox(
      'Jacksonville', 'LasVegas', 'LosAngeles', 'Louisville', 'MiamiFtLauderdale', 'Nashville', 'NewOrleansMobile', 
      'NewYork', 'NorthernNewEngland', 'Orlando', 'Philadelphia', 'PhoenixTucson', 'Pittsburgh', 'Plains', 'Portland', 
      'RaleighGreensboro', 'RichmondNorfolk', 'Roanoke', 'Sacramento', 'SanDiego', 'SanFrancisco', 'Seattle', 
-     'SouthCarolina', 'SouthCentral', 'Spokane', 'StLouis', 'Syracuse', 'Tampa', 'WestTexNewMexico']
+     'SouthCarolina', 'SouthCentral', 'Spokane', 'StLouis', 'Syracuse', 'Tampa', 'WestTexNewMexico'],
+    index=0
 )
 
 d = {
@@ -153,11 +164,15 @@ d = {
 df = pd.DataFrame(d)
 st.dataframe(df)
 
-logged_model = 'runs:/f5b154c4434c4f35a73248d9aae87e85/model'
+if st.button('Predict'):
+    if (plu4046 == 0.0 and plu4225 == 0.0 and plu4770 == 0.0 and small_bags == 0.0 and large_bags == 0.0 and xlarge_bags == 0.0):
+        st.error('Please fill in the fields related to the quantity of sale! aka PLU4046, PLU4225, PLU4770, Small Bags, Large Bags, XLarge Bags')
+    else:
+        logged_model = 'runs:/f5b154c4434c4f35a73248d9aae87e85/model'
 
-# Load model as a PyFuncModel.
-model = mlflow.pyfunc.load_model(logged_model)
+        # Load model as a PyFuncModel.
+        model = mlflow.pyfunc.load_model(logged_model)
 
-r = model.predict(df)
+        r = model.predict(df)
 
-st.success(f'Average Price: {r}')
+        st.success(f'Average Price: {r}')
