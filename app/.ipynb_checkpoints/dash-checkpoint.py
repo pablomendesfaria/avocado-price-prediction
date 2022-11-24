@@ -7,7 +7,7 @@ import pathlib
 from PIL import Image
 
 
-wd = pathlib.Path().absolute()
+wd = pathlib.Path('dash.py').parent.absolute()
 
 st.set_page_config(
     page_title="Avocado project",
