@@ -2,7 +2,6 @@ import streamlit as st
 import numpy as np
 import pandas as pd
 import pickle
-import mlflow
 
 
 st.set_page_config(
@@ -11,7 +10,7 @@ st.set_page_config(
 )
 
 st.markdown('# Avocado project')
-st.image('app/avocado.jpg', caption='Avocado project')
+st.image('imgs/avocado.jpg', caption='Avocado project')
 
 st.markdown('## Fill in the avocado sales information of the week')
 
@@ -165,10 +164,8 @@ if st.button('Predict'):
     if (plu4046 == 0.0 and plu4225 == 0.0 and plu4770 == 0.0 and small_bags == 0.0 and large_bags == 0.0 and xlarge_bags == 0.0):
         st.error('Please fill in the fields related to the quantity of sale! aka PLU4046, PLU4225, PLU4770, Small Bags, Large Bags, XLarge Bags')
     else:
-        logged_model = 'runs:/f5b154c4434c4f35a73248d9aae87e85/model'
-
-        # Load model as a PyFuncModel.
-        model = mlflow.pyfunc.load_model(logged_model)
+        with open(r'models/model.pickle', 'rb') as input_file:
+           model = pickle.load(input_file)
 
         r = model.predict(df)
 
