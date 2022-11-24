@@ -3,10 +3,10 @@ import numpy as np
 import pandas as pd
 import pickle
 import mlflow
-import cv2 as cv
+from PIL import Image
 
 
-image = cv.imread('avocado.jpg')[...,::-1]
+image = Image.open('avocado.jpg')
 
 st.set_page_config(
     page_title="Avocado project",
