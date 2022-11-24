@@ -12,7 +12,7 @@ st.set_page_config(
 )
 
 st.markdown('# Avocado project')
-st.image('avocado.jpg', caption='Avocado project')
+st.image('avocado.png', caption='Avocado project')
 
 st.markdown('## Fill in the avocado sales information of the week')
 

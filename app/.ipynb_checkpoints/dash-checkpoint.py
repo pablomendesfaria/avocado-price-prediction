@@ -6,15 +6,13 @@ import mlflow
 from PIL import Image
 
 
-image = Image.open('avocado.jpg')
-
 st.set_page_config(
     page_title="Avocado project",
     page_icon="🥑"
 )
 
 st.markdown('# Avocado project')
-st.image(image, caption='Avocado project')
+st.image('avocado.png', caption='Avocado project')
 
 st.markdown('## Fill in the avocado sales information of the week')
 
