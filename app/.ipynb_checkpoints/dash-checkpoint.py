@@ -3,7 +3,6 @@ import numpy as np
 import pandas as pd
 import pickle
 import mlflow
-from PIL import Image
 
 
 st.set_page_config(
@@ -11,10 +10,8 @@ st.set_page_config(
     page_icon="🥑"
 )
 
-st.success(f'Working directory: {wd}')
-
 st.markdown('# Avocado project')
-st.image(f'app/avocado.jpg', caption='Avocado project')
+st.image('app/avocado.jpg', caption='Avocado project')
 
 st.markdown('## Fill in the avocado sales information of the week')
 
