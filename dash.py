@@ -166,6 +166,6 @@ if st.button('Predict'):
     else:
         model = pickle.load(open(r'models/model.pkl', 'rb'))
 
-        r = model.predict(df)
+        r = np.round(model.predict(df), 2)
 
         st.success(f'Average Price: {r}')
