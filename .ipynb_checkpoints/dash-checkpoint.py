@@ -164,8 +164,7 @@ if st.button('Predict'):
     if (plu4046 == 0.0 and plu4225 == 0.0 and plu4770 == 0.0 and small_bags == 0.0 and large_bags == 0.0 and xlarge_bags == 0.0):
         st.error('Please fill in the fields related to the quantity of sale! aka PLU4046, PLU4225, PLU4770, Small Bags, Large Bags, XLarge Bags')
     else:
-        with open(r'models/model.pickle', 'rb') as input_file:
-           model = pickle.load(input_file)
+        model = pickle.load(open(r'models/model.pkl', 'rb'))
 
         r = model.predict(df)
 
