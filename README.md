@@ -34,3 +34,18 @@ And then...
 $ pip install -e .
 ```
 
+### To run the app and make predictions
+
+Be at the root of the project, and do:
+
+```
+$ streamlit run dash.py
+```
+
+You can access the application in the browser by the URL: http://localhost:8501
+
+To stop the application:
+
+```
+$ Ctrl + c
+```

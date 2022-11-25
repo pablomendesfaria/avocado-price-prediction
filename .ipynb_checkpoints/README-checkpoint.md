@@ -4,7 +4,7 @@ Módelo de ML que realiza a previsão do preço do abacate.
 
 ## Dev.:
 
-1. Create virtual env with virtualenvwrapper:
+1. Create virtual env with [virtualenvwrapper](https://virtualenvwrapper.readthedocs.io/en/latest/install.html):
 
 ```
 $ mkvirtualenv avocado -p python3
@@ -16,7 +16,7 @@ $ mkvirtualenv avocado -p python3
 $ workon avocado
 ```
 
-If you want to deactivate:
+3. If you want to deactivate:
 
 ```
 $ deactivate
@@ -34,3 +34,18 @@ And then...
 $ pip install -e .
 ```
 
+### To run the app and make predictions
+
+Be at the root of the project, and do:
+
+```
+$ streamlit run dash.py
+```
+
+You can access the application in the browser by the URL: http://localhost:8501
+
+To stop the application:
+
+```
+$ Ctrl + c
+```
